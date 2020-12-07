@@ -2,10 +2,7 @@
 
 This file is used to list changes made in each version of the tgw_wordpress cookbook.
 
-# 0.1.0
+# 0.1.0 (07-Dec-2020)
 
-Initial release.
-
-- change 0
-- change 1
+- Installs base server configuration.
 
