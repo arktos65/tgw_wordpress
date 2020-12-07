@@ -9,6 +9,7 @@ gem 'public_suffix'
 gem 'rake'
 gem 'rubocop'
 gem 'thor'
+gem 'unf_ext', '~> 0.0.7.7'
 
 group :travis do
   gem 'test-kitchen', '~> 2.7', '>= 2.7.2'
