@@ -2,6 +2,8 @@
 
 This cookbook installs and configures WordPress, MySQL, and Nginx in a standalone configuration.
 
+Supports: MySQL 5.7 CE
+
 ## Contributing
 
 1. Fork the repository on Github

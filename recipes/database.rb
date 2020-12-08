@@ -1,6 +1,6 @@
 #
 # Cookbook:: tgw_wordpress
-# Recipe:: default
+# Recipe:: database
 #
 # Copyright:: 2020, TGW Consulting, LLC
 #
@@ -16,7 +16,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Install required server components and languages
-node.override['tgw-server-base']['php']['install'] = true
-include_recipe 'tgw-server-base::default'
-include_recipe 'tgw_wordpress::database'
+include_recipe 'yum-centos::default'
+include_recipe 'yum-mysql-community::mysql57'
+
+mysql_service node['tgw_wordpress']['mysql']['service'] do
+  version '5.7'
+  bind_address node['tgw_wordpress']['mysql']['bind_address']
+  port node['tgw_wordpress']['mysql']['port']
+  data_dir node['tgw_wordpress']['mysql']['data_dir']
+  initial_root_password node['tgw_wordpress']['mysql']['root_password']
+  action [:create, :start]
+end

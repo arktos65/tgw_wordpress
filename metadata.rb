@@ -15,6 +15,8 @@ issues_url 'https://github.com/arktos65/tgw_wordpress/issues'
 source_url 'https://github.com/arktos65/tgw_wordpress'
 
 depends 'tgw-server-base'
+depends 'yum-centos'
+depends 'yum-mysql-community'
 depends 'firewalld'
 depends 'nginx'
 depends 'mysql'

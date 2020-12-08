@@ -27,3 +27,9 @@ suites:
       inspec_tests:
         - test/integration/default
     attributes:
+  - name: database
+    run_list: recipe[tgw_wordpress::database]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:
