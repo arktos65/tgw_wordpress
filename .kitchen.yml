@@ -33,3 +33,9 @@ suites:
       inspec_tests:
         - test/integration/default
     attributes:
+  - name: nginx
+    run_list: recipe[tgw_wordpress::nginx]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:
