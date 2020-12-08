@@ -16,4 +16,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe 'tgw_server_base::default'
+# Install required server components and languages
+node.override['tgw-server-base']['php']['install'] = true
+include_recipe 'tgw-server-base::default'

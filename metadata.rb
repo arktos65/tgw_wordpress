@@ -16,3 +16,5 @@ source_url 'https://github.com/arktos65/tgw_wordpress'
 
 depends 'tgw-server-base'
 depends 'firewalld'
+depends 'nginx'
+depends 'mysql'
