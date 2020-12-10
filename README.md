@@ -2,6 +2,7 @@
 
 This cookbook installs and configures WordPress, MySQL, and Nginx in a standalone configuration.
 
+Operating System: Centos 7
 Supports: MySQL 5.7 CE
 
 ## Contributing

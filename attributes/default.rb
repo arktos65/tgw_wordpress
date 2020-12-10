@@ -28,3 +28,12 @@ default['tgw_wordpress']['mysql']['user'] = 'wordpress'
 default['tgw_wordpress']['mysql']['password'] = 'change me'
 default['tgw_wordpress']['mysql']['database'] = 'wordpress_db'
 default['tgw_wordpress']['mysql']['root_password'] = 'Chang4me3!'
+
+# Cookbook controls
+default['tgw_wordpress']['wp']['install'] = true
+default['tgw_wordpress']['wp']['user'] = 'wordpress'
+default['tgw_wordpress']['wp']['group'] = 'wordpress'
+default['tgw_wordpress']['wp']['password'] = 'Ch4ngeM3!'
+default['tgw_wordpress']['wp']['home_dir'] = "/home/#{node['tgw_wordpress']['wp']['user']}"
+default['tgw_wordpress']['wp']['install_dir'] = "/home/#{node['tgw_wordpress']['wp']['user']}/html"
+default['tgw_wordpress']['wp']['source'] = 'https://wordpress.org/latest.tar.gz'
