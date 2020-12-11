@@ -22,4 +22,4 @@ include_recipe 'tgw-server-base::default'
 include_recipe 'tgw_wordpress::database'
 include_recipe 'tgw_wordpress::nginx'
 include_recipe 'tgw_wordpress::wordpress' if node['tgw_wordpress']['wp']['install']
-
+include_recipe 'tgw_wordpress::configure'
