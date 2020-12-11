@@ -31,3 +31,5 @@ nginx_site node['tgw_wordpress']['nginx']['site'] do
   action :create
   notifies :reload, 'nginx_service[nginx]', :delayed
 end
+
+#TODO: Add SSL configuration support
