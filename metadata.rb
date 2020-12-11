@@ -4,7 +4,7 @@ maintainer_email 'sean@tgwconsulting.co'
 license 'Apache-2.0'
 description 'Install and configure standalone Wordpress system.'
 long_description 'Installs and configures Nginx, MySQL, PHP, and Wordpress on a standalone system.'
-version '0.1.0'
+version '0.2.0'
 chef_version '>= 13' if respond_to?(:chef_version)
 
 ['centos', 'fedora', 'redhat', 'scientific'].each do |os|
