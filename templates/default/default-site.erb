@@ -10,6 +10,6 @@ access_log   <%= @nginx_log_dir %>/localhost.access.log;
 
 location / {
 root   <%= @default_root %>;
-index  index.html index.htm;
+index  index.php index.html index.htm;
 }
 }
