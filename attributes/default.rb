@@ -23,7 +23,7 @@
 default['tgw_wordpress']['mysql']['service'] = 'default'
 default['tgw_wordpress']['mysql']['bind_address'] = '0.0.0.0'
 default['tgw_wordpress']['mysql']['port'] = '3306'
-default['tgw_wordpress']['mysql']['data_dir'] = '/data'
+default['tgw_wordpress']['mysql']['data_dir'] = '/var/lib/mysql'
 default['tgw_wordpress']['mysql']['user'] = 'wordpress'
 default['tgw_wordpress']['mysql']['password'] = 'change me'
 default['tgw_wordpress']['mysql']['database'] = 'wordpress_db'
