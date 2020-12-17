@@ -18,6 +18,7 @@
 
 include_recipe 'yum-centos::default'
 
+Chef::Log.info('Installing Nginx web server.')
 # Install Nginx server
 nginx_install 'nginx' do
   source 'epel'

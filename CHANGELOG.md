@@ -2,6 +2,16 @@
 
 This file is used to list changes made in each version of the tgw_wordpress cookbook.
 
+# 0.3.0 (15-Dec-2020)
+
+- Configures New Relic agent for MySQL and Nginx monitoring.
+- Open port required ports in local firewall.
+
+# 0.2.1 (15-Dec-2020)
+
+- Updated default home page name in Nginx site template.
+- Bug fixes.
+
 # 0.2.0 (12-Dec-2020)
 
 - Configure Nginx to host Wordpress site.

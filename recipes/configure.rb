@@ -19,7 +19,18 @@
 # limitations under the License.
 #
 
+Chef::Log.info('Installing firewalld service.')
+yum_package 'firewalld' do
+  action :install
+end
+bash 'enable_firewalld' do
+  code <<-EOH
+    systemctl enable firewalld && systemctl start firewalld
+  EOH
+end
+
 # Add site to Nginx configuration
+Chef::Log.info('Configuring Nginx web site settings.')
 nginx_site node['tgw_wordpress']['nginx']['site'] do
   template 'default-site.erb'
   variables(
@@ -31,5 +42,11 @@ nginx_site node['tgw_wordpress']['nginx']['site'] do
   action :create
   notifies :reload, 'nginx_service[nginx]', :delayed
 end
+
+# Update firewall settings
+Chef::Log.info('Opening firewall ports.')
+firewalld_port "#{node['tgw_wordpress']['mysql']['port']}/tcp"
+firewalld_port '80/tcp'
+firewalld_port '443/tcp'
 
 #TODO: Add SSL configuration support

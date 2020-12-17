@@ -19,6 +19,7 @@
 include_recipe 'yum-centos::default'
 include_recipe 'yum-mysql-community::mysql57'
 
+Chef::Log.info('Installing and configuring MySQL instance.')
 mysql_service node['tgw_wordpress']['mysql']['service'] do
   version '5.7'
   bind_address node['tgw_wordpress']['mysql']['bind_address']

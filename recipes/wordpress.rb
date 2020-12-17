@@ -20,6 +20,7 @@
 #
 
 # Create hosting user
+Chef::Log.info('Setting up web hosting account user.')
 group node['tgw_wordpress']['wp']['group'] do
   comment 'Wordpress hosting group'
   action :create
@@ -48,6 +49,7 @@ directory node['tgw_wordpress']['wp']['install_dir'] do
 end
 
 # Download latest build of Wordpress
+Chef::Log.info('Download and extract Wordpress package.')
 remote_file "#{node['tgw_wordpress']['wp']['install_dir']}/wordpress.tgz" do
   source node['tgw_wordpress']['wp']['source']
   owner node['tgw_wordpress']['wp']['user']
