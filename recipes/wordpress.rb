@@ -27,7 +27,7 @@ group node['tgw_wordpress']['wp']['group'] do
 end
 user node['tgw_wordpress']['wp']['user'] do
   comment 'Wordpress hosting user'
-  gid node['tgw_wordpress']['wp']['group']
+  gid node['tgw_wordpress']['nginx']['group']
   home node['tgw_wordpress']['wp']['home_dir']
   manage_home true
   shell '/bin/bash'
@@ -37,13 +37,13 @@ end
 # Create Wordpress install directory
 directory node['tgw_wordpress']['wp']['home_dir'] do
   owner node['tgw_wordpress']['wp']['user']
-  group node['tgw_wordpress']['wp']['group']
+  group node['tgw_wordpress']['nginx']['group']
   mode '0750'
   action :create
 end
 directory node['tgw_wordpress']['wp']['install_dir'] do
   owner node['tgw_wordpress']['wp']['user']
-  group node['tgw_wordpress']['wp']['group']
+  group node['tgw_wordpress']['nginx']['group']
   mode '0755'
   action :create
 end
@@ -53,13 +53,18 @@ Chef::Log.info('Download and extract Wordpress package.')
 remote_file "#{node['tgw_wordpress']['wp']['install_dir']}/wordpress.tgz" do
   source node['tgw_wordpress']['wp']['source']
   owner node['tgw_wordpress']['wp']['user']
-  group node['tgw_wordpress']['wp']['group']
+  group node['tgw_wordpress']['nginx']['group']
   mode '0755'
   action :create
 end
 execute 'extract_wordpress' do
-  command 'tar xzf wordpress.tgz'
+  command 'tar --strip-components=1 -zxvf wordpress.tgz'
   cwd node['tgw_wordpress']['wp']['install_dir']
   user node['tgw_wordpress']['wp']['user']
-  group node['tgw_wordpress']['wp']['group']
+  group node['tgw_wordpress']['nginx']['group']
 end
+execute 'update_runtime_permissions' do
+  command 'chmod 755 -R *'
+  cwd node['tgw_wordpress']['wp']['install_dir']
+end
+

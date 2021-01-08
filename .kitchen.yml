@@ -21,7 +21,7 @@ platforms:
   - name: centos-7
     driver_config:
       network:
-        - [ "forwarded_port", { guest: 80, host: 8080 } ]
+        - [ "forwarded_port", { guest: 8080, host: 8080 } ]
 
 suites:
   - name: default
@@ -30,6 +30,9 @@ suites:
       inspec_tests:
         - test/integration/default
     attributes:
+      tgw_wordpress:
+        nginx:
+          port: 8080
   - name: database
     run_list: recipe[tgw_wordpress::database]
     verifier:

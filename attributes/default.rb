@@ -36,11 +36,13 @@ default['tgw_wordpress']['wp']['group'] = 'wordpress'
 default['tgw_wordpress']['wp']['password'] = 'Ch4ngeM3!'
 default['tgw_wordpress']['wp']['home_dir'] = "/home/#{node['tgw_wordpress']['wp']['user']}"
 default['tgw_wordpress']['wp']['install_dir'] = "/home/#{node['tgw_wordpress']['wp']['user']}/html"
-default['tgw_wordpress']['wp']['runtime_dir'] = "/home/#{node['tgw_wordpress']['wp']['user']}/html/wordpress"
+default['tgw_wordpress']['wp']['runtime_dir'] = "/home/#{node['tgw_wordpress']['wp']['user']}/html"
 default['tgw_wordpress']['wp']['source'] = 'https://wordpress.org/latest.tar.gz'
 
 # Nginx controls
+default['tgw_wordpress']['nginx']['group'] = 'nginx'
 default['tgw_wordpress']['nginx']['site'] = 'wordpress_site'
+default['tgw_wordpress']['nginx']['port'] = '80'
 default['tgw_wordpress']['nginx']['server_name'] = 'wordpress.local'
 default['tgw_wordpress']['nginx']['enable_ssl'] = false
 default['tgw_wordpress']['nginx']['log_dir'] = '/var/log/nginx'

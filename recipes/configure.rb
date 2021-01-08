@@ -34,7 +34,7 @@ Chef::Log.info('Configuring Nginx web site settings.')
 nginx_site node['tgw_wordpress']['nginx']['site'] do
   template 'default-site.erb'
   variables(
-    'port': 80,
+    'port': node['tgw_wordpress']['nginx']['port'],
     'server_name': node['tgw_wordpress']['nginx']['server_name'],
     'default_root': node['tgw_wordpress']['wp']['runtime_dir'],
     'nginx_log_dir': node['tgw_wordpress']['nginx']['log_dir']
@@ -46,7 +46,6 @@ end
 # Update firewall settings
 Chef::Log.info('Opening firewall ports.')
 firewalld_port "#{node['tgw_wordpress']['mysql']['port']}/tcp"
-firewalld_port '80/tcp'
-firewalld_port '443/tcp'
+firewalld_port "#{node['tgw_wordpress']['nginx']['port']}/tcp"
 
 #TODO: Add SSL configuration support
